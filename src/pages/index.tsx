@@ -23,9 +23,9 @@ type RequisitionType = {
 
 export default function Home(): JSX.Element {
   async function fetchImages({ pageParam = null }): Promise<RequisitionType> {
-    const { data } = await api.get<RequisitionType>(
-      `/api/images${pageParam ? `?after=${pageParam}` : ''}`
-    );
+    const { data } = await api.get<RequisitionType>('/api/images', {
+      params: pageParam,
+    });
 
     return data;
   }
