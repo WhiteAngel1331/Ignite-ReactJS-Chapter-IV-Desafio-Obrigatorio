@@ -26,7 +26,7 @@ export default function Home(): JSX.Element {
     const { data } = await api.get<RequisitionType>(
       `/api/images${pageParam ? `?after=${pageParam}` : ''}`
     );
-    console.log(pageParam, data);
+
     return data;
   }
 

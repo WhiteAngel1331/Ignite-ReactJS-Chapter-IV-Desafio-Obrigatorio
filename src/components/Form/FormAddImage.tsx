@@ -60,7 +60,7 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
       const url = imageUrl;
       const { title, description } = data;
 
-      return api.post('/images', {
+      return api.post('/api/images', {
         url,
         title,
         description,
@@ -101,6 +101,7 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
             status: 'success',
             title: 'Imagem cadastrada',
             description: 'Sua imagem foi cadastrada com sucesso.',
+            duration: 3000,
           });
         },
       });
@@ -113,11 +114,9 @@ export function FormAddImage({ closeModal }: FormAddImageProps): JSX.Element {
         isClosable: true,
       });
     } finally {
-      setTimeout(() => {
-        reset({ title: '', description: '' });
-        setLocalImageUrl('');
-        closeModal();
-      }, 3000);
+      reset({ title: '', description: '' });
+      setLocalImageUrl('');
+      closeModal();
     }
   };
 
